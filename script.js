@@ -1,88 +1,94 @@
-let currentQuestion = 1; // Variável que armazena o número da pergunta atual, iniciando em 1
-let pontos = 0; // Variável que armazena a pontuação do usuário, iniciando em 0
+let currentQuestion = 1; // Armazena o número da pergunta atual
+let pontos = 0; // Armazena a pontuação do jogador
 
-// Função que inicia o quiz, escondendo a história e mostrando a primeira pergunta
 function começarQuiz() {
-    document.getElementById("historia").style.display = "none"; // Esconde o elemento com id "historia"
-    document.getElementById("quiz").style.display = "block"; // Mostra o elemento com id "quiz"
-    mostrarPergunta(currentQuestion); // Chama a função para exibir a pergunta atual
+    document.getElementById("historia").style.display = "none"; // Esconde a história
+    document.getElementById("quiz").style.display = "block"; // Mostra o quiz
+    mostrarPergunta(currentQuestion); // Mostra a primeira pergunta
 }
 
-// Função que exibe uma pergunta específica e esconde as demais
+// Função que exibe a pergunta atual e esconde as outras
 function mostrarPergunta(pergunta) {
-    const todasPerguntas = document.querySelectorAll(".question"); // Seleciona todas as perguntas com a classe "question"
-    todasPerguntas.forEach((q) => {
-        q.style.display = "none"; // Esconde todas as perguntas
-    });
-    document.getElementById(`pergunta${pergunta}`).style.display = "block"; // Mostra a pergunta correspondente ao número passado
+    const todasPerguntas = document.querySelectorAll(".question");
+    
+    // Laço FOR para percorrer todas as perguntas e escondê-las
+    for (let i = 0; i < todasPerguntas.length; i++) {
+        todasPerguntas[i].style.display = "none"; // Esconde todas as perguntas
+    }
+    document.getElementById(`pergunta${pergunta}`).style.display = "block"; // Exibe a pergunta atual
 }
 
-// Função que processa a resposta e avança para a próxima pergunta
+// Função para passar para a próxima pergunta e aumentar a pontuação
 function proximaPergunta(perguntaAtual) {
-    const respostaSelecionada = document.getElementById(`question${perguntaAtual}`).value; // Obtém o valor da resposta selecionada na pergunta atual
+    const respostaSelecionada = document.getElementById(`question${perguntaAtual}`).value;
 
-    // Avalia a resposta e atribui pontos dependendo do valor
+    // SWITCH-CASE: Utilizado para verificar em qual pergunta estamos e atribuir pontos com base na resposta
     switch (perguntaAtual) {
         case 1:
-            pontos += (respostaSelecionada === "amizade") ? 20 : 10; // Se a resposta for "amizade", ganha 20 pontos; senão, 10
+            pontos += (respostaSelecionada === "amizade") ? 20 : 10; // Amizade (Dragão) vale mais pontos,,,,,,,, se escolher a resposta "amizade" ganha 20 pontos, se nao escolher, ganha 10
             break;
         case 2:
-            pontos += (respostaSelecionada === "voar") ? 20 : 10;
+            pontos += (respostaSelecionada === "voar") ? 20 : 10; // Voar (Dragão) vale mais pontos
             break;
         case 3:
-            pontos += (respostaSelecionada === "fogo") ? 20 : 10;
+            pontos += (respostaSelecionada === "fogo") ? 20 : 10; // Fogo (Dragão) vale mais pontos
             break;
         case 4:
-            pontos += (respostaSelecionada === "montanha") ? 20 : 10;
+            pontos += (respostaSelecionada === "montanha") ? 20 : 10; // Montanha (Dragão) vale mais pontos
             break;
         case 5:
-            pontos += (respostaSelecionada === "voo") ? 20 : 10;
+            pontos += (respostaSelecionada === "voo") ? 20 : 10; // Voo (Dragão) vale mais pontos
             break;
         case 6:
-            pontos += (respostaSelecionada === "forca") ? 20 : 10;
+            pontos += (respostaSelecionada === "forca") ? 20 : 10; // Força (Dragão) vale mais pontos
             break;
         case 7:
-            pontos += (respostaSelecionada === "dragao") ? 20 : 10;
+            pontos += (respostaSelecionada === "dragao") ? 20 : 10; // Dragão vale mais pontos
             break;
         case 8:
-            pontos += (respostaSelecionada === "enfrentar") ? 20 : 10;
+            pontos += (respostaSelecionada === "enfrentar") ? 20 : 10; // Enfrentar (Dragão) vale mais pontos
             break;
         case 9:
-            pontos += (respostaSelecionada === "lenda") ? 20 : 10;
+            pontos += (respostaSelecionada === "lenda") ? 20 : 10; // Lenda (Dragão) vale mais pontos
             break;
         case 10:
-            pontos += (respostaSelecionada === "caverna") ? 20 : 10;
+            pontos += (respostaSelecionada === "caverna") ? 20 : 10; // Caverna (Dragão) vale mais pontos
             break;
     }
 
-    // Se ainda houver mais perguntas, mostra a próxima; caso contrário, calcula o resultado final
+    //Se ainda houver perguntas, vai para a próxima pergunta; caso contrário, calcula o resultado
     if (perguntaAtual < 10) {
-        mostrarPergunta(perguntaAtual + 1); // Exibe a próxima pergunta
+        mostrarPergunta(perguntaAtual + 1);
     } else {
-        calcularResultado(); // Calcula e exibe o resultado final
+        calcularResultado(); // Calcula o resultado final
     }
 }
 
-// Função que calcula e exibe o resultado final
+// Função para calcular o resultado com base na pontuação
 function calcularResultado() {
-    document.getElementById("quiz").style.display = "none"; // Esconde o elemento do quiz
-    document.getElementById("resultado").style.display = "block"; // Mostra o elemento de resultado
+    // Esconde o quiz e exibe o resultado
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("resultado").style.display = "block";
 
     // Exibe a pontuação final
     document.getElementById("resultadoFinal").textContent = "Sua pontuação final é: " + pontos;
 
-    // Define a imagem de resultado com base na pontuação do usuário
+    const frase = document.getElementById("fraseResultado");
     const imagem = document.getElementById("resultadoImagem");
+
+    
     if (pontos >= 120) {
-        imagem.src = "img/dragao.jpg"; // Exibe imagem de dragão se a pontuação for 120 ou mais
-        imagem.alt = "Você é Zephyros!"; // Texto alternativo descrevendo o resultado
+        frase.textContent = "Você é Zephyros!";
+        imagem.src = "img/dragao.jpg"; 
+        imagem.alt = "Imagem do zephyros";
     } else {
-        imagem.src = "img/viking.jpeg"; // Exibe imagem de viking se a pontuação for menor que 120
-        imagem.alt = "Você é Kael!"; // Texto alternativo descrevendo o resultado
+        frase.textContent = "Você é Kael!";
+        imagem.src = "img/viking.jpeg"; 
+        imagem.alt = "Imagem do kael";
     }
 }
 
-// Função que reinicia o quiz recarregando a página
+// Função que reinicia o quiz
 function reiniciarQuiz() {
-    window.location.reload(); // Recarrega a página para reiniciar o quiz
+    window.location.reload(); 
 }
