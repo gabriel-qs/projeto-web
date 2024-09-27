@@ -1,0 +1,147 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>QuestionárioWeb</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Questionário/Quizz</h1>
+
+        <div id="historia" class="box">
+
+            <h2>A Lenda do Dragão Celestial e do Guerreiro Valente</h2>
+            <p>A Lenda do Dragão Celestial e do Guerreiro Valente</p>
+            <p>Em um reino distante, envolto em mistérios e magia, havia uma antiga lenda sobre um dragão celestial chamado Zephyros. Ele era conhecido por suas escamas brilhantes que refletiam a luz das estrelas e por sua habilidade de controlar os ventos e as tempestades. Os aldeões acreditavam que Zephyros protegia o reino, trazendo boas colheitas e clima favorável.</p>
+            <p>Certa vez, um poderoso feiticeiro, com sede de poder, lançou uma maldição sobre o reino. As terras começaram a murchar, e as tempestades se tornaram frequentes e devastadoras. Em desespero, os habitantes se reuniram na Montanha Sussurrante, onde acreditavam que Zephyros dormia. Eles pediram ao dragão que os ajudasse a quebrar a maldição.</p>
+            <p>Sentindo a angústia dos humanos, Zephyros despertou de seu longo sono. Com um rugido que ecoou por todo o vale, ele voou até o castelo do feiticeiro. Uma batalha épica se seguiu, com raios e ventos se chocando no céu. O dragão, com sua magia ancestral, derrotou o feiticeiro, mas não sem custos. Ao fazê-lo, Zephyros ficou gravemente ferido e precisou retornar ao seu descanso eterno.</p>
+            <p>Gratos pela salvação, os aldeões ergueram um templo em homenagem a Zephyros, onde todos podiam ir para agradecer ao dragão por sua proteção. No entanto, ao lado de Zephyros, havia um guerreiro valente chamado Kael. Ele era conhecido por sua bravura e determinação, sempre disposto a lutar pelo que era certo. A lenda diz que aqueles que se destacam em coragem e compaixão podem ser abençoados pelo dragão e, assim, se tornarem heróis em seu próprio direito.</p>
+            <p>Com o tempo, as lendas de Zephyros e Kael se espalharam, e as gerações futuras aprenderam que a verdadeira magia reside não apenas no poder, mas no sacrifício e na coragem de lutar pelo que é certo.</p>
+
+            <button id="comecarQuiz" onclick="começarQuiz()">Começar</button>
+        </div>
+
+        <div id="quiz" style="display: none;">
+            <div id="pergunta1" class="question box">
+                <p>Qual seria sua reação ao encontrar um dragão?</p>
+                <select id="question1">
+                    <option value="amizade">Fazer amizade com ele</option>
+                    <option value="desafio">Desafiá-lo para uma luta</option>
+                </select>
+                <button onclick="proximaPergunta(1)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta2" class="question box" style="display: none;">
+                <p>Como você prefere viajar?</p>
+                <select id="question2">
+                    <option value="voar">Voando nas costas de um dragão</option>
+                    <option value="caminhar">Caminhando por trilhas</option>
+                </select>
+                <button onclick="proximaPergunta(2)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta3" class="question box" style="display: none;">
+                <p>Qual é sua habilidade favorita?</p>
+                <select id="question3">
+                    <option value="fogo">Controlar o fogo</option>
+                    <option value="estrategia">Ser um mestre em estratégia</option>
+                </select>
+                <button onclick="proximaPergunta(3)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta4" class="question box" style="display: none;">
+                <p>Qual tipo de ambiente você prefere?</p>
+                <select id="question4">
+                    <option value="montanha">Montanhas altas e ventosas</option>
+                    <option value="floresta">Florestas densas e sombrias</option>
+                </select>
+                <button onclick="proximaPergunta(4)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta5" class="question box" style="display: none;">
+                <p>Se você pudesse ter um superpoder, qual seria?</p>
+                <select id="question5">
+                    <option value="voo">Voo como um dragão</option>
+                    <option value="invisibilidade">Invisibilidade como um humano</option>
+                </select>
+                <button onclick="proximaPergunta(5)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta6" class="question box" style="display: none;">
+                <p>Qual dessas características você valoriza mais?</p>
+                <select id="question6">
+                    <option value="forca">Força e poder</option>
+                    <option value="sabedoria">Sabedoria e inteligência</option>
+                </select>
+                <button onclick="proximaPergunta(6)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta7" class="question box" style="display: none;">
+                <p>Se você tivesse que escolher um animal, qual escolheria?</p>
+                <select id="question7">
+                    <option value="dragao">Um dragão majestoso</option>
+                    <option value="gato">Um gato esperto e astuto</option>
+                </select>
+                <button onclick="proximaPergunta(7)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta8" class="question box" style="display: none;">
+                <p>Qual a sua abordagem em um conflito?</p>
+                <select id="question8">
+                    <option value="fugir">Fugir se necessário</option>
+                    <option value="enfrentar">Enfrentar de frente</option>
+                </select>
+                <button onclick="proximaPergunta(8)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta9" class="question box" style="display: none;">
+                <p>Se você pudesse escolher um legado, qual seria?</p>
+                <select id="question9">
+                    <option value="lenda">Ser lembrado como uma lenda</option>
+                    <option value="heroi">Ser lembrado como um herói</option>
+                </select>
+                <button onclick="proximaPergunta(9)">Próxima</button>
+            </div>
+
+
+
+            <div id="pergunta10" class="question box" style="display: none;">
+                <p>Qual desses lugares você escolheria para viver?</p>
+                <select id="question10">
+                    <option value="castelo">Um castelo majestoso</option>
+                    <option value="caverna">Uma caverna secreta</option>
+                </select>
+                <button onclick="calcularResultado()">Enviar</button>
+            </div>
+        </div>
+
+
+
+        <div id="resultado" class="box" style="display: none;">
+            <h2>Resultado:</h2>
+            <p id="resultadoFinal"></p>
+            <img id="resultadoImagem" src="" alt="" style="max-width: 100%; height: auto; margin-top: 15px;">
+            <button onclick="reiniciarQuiz()">Reiniciar</button>
+        </div>
+        
+
+        <script src="script.js"></script>
+    </body>
+    </html>
